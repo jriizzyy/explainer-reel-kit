@@ -1,0 +1,1 @@
+window.MEDIA_FILES = ["media/roadster/CREDITS.txt", "media/roadster/clips/README.txt", "media/roadster/elon_2025.jpg", "media/roadster/elon_press.jpg", "media/roadster/elon_skidmore.jpg", "media/roadster/roadster_2017.jpg"];

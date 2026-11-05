@@ -1,0 +1,60 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Inter;src:url(fonts/Inter-Regular.otf);font-weight:400}
+@font-face{font-family:Inter;src:url(fonts/Inter-Medium.otf);font-weight:500}
+@font-face{font-family:Inter;src:url(fonts/Inter-SemiBold.otf);font-weight:600}
+@font-face{font-family:Inter;src:url(fonts/Inter-Bold.otf);font-weight:700}
+@font-face{font-family:Inter;src:url(fonts/Inter-ExtraBold.otf);font-weight:800}
+@font-face{font-family:Inter;src:url(fonts/Inter-Black.otf);font-weight:900}
+@font-face{font-family:'JetBrains Mono';src:url(fonts/JetBrainsMono_400Regular.ttf);font-weight:400}
+@font-face{font-family:'JetBrains Mono';src:url(fonts/JetBrainsMono_500Medium.ttf);font-weight:500}
+@font-face{font-family:'JetBrains Mono';src:url(fonts/JetBrainsMono_700Bold.ttf);font-weight:700}
+:root{--bg:rgb(14,14,15);--fg:rgb(242,242,242);--fgr:242,242,242;--mute:#777;--card:#18181a;--line:#2c2c30;--sub:#a0a0a6;--gridc:rgba(255,255,255,.045);--shadow:0 40px 90px rgba(0,0,0,.55);--m:0;
+ --or:#e8794b;--orl:#f6b394;--vi:#7357ff;--vil:#a899ff;--bl:#3b82f6;--gr:#22c55e;--rd:#ef4444;--am:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:Inter,"Inter Display",sans-serif;color:var(--fg);-webkit-font-smoothing:antialiased}
+#bg{position:absolute;inset:0;background:var(--bg)}
+#grid{position:absolute;inset:0;background-image:linear-gradient(var(--gridc) 1px,transparent 1px),linear-gradient(90deg,var(--gridc) 1px,transparent 1px);background-size:54px 54px;background-position:-1px -1px;
+ -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 48%,#000 40%,transparent 100%)}
+#glow{position:absolute;left:50%;top:50%;width:1300px;height:1300px;margin:-650px 0 0 -650px;border-radius:50%;background:radial-gradient(circle,var(--glowc,rgba(90,70,255,.22)) 0%,transparent 62%)}
+#stage{position:absolute;inset:0}
+.scene{position:absolute;inset:0;transform-origin:540px 960px;display:none}
+#cap{position:absolute;left:70px;right:70px;top:196px;text-align:center;font-size:58px;line-height:1.2;letter-spacing:-0.5px;z-index:50}
+#cap .w{display:inline-block;position:relative;margin:0 .02em}
+#cap .prev{color:rgb(var(--fgr));opacity:.5;font-weight:400}
+#cap .w.prev .tx{color:var(--mute);font-weight:400}
+#cap .w.cur .tx{color:var(--fg);font-weight:700}
+#cap .w.key .tx{color:var(--fg);font-weight:700}
+#cap .sel{position:absolute;left:-8px;right:-8px;top:2px;bottom:-2px;border:3px solid var(--bl);background:rgba(59,130,246,.14);border-radius:3px}
+#cap .sel i{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--bl);border:2px solid #fff}
+#cap .sel .h1{left:-8px;top:-8px}#cap .sel .h2{right:-8px;bottom:-8px}
+.abs{position:absolute}
+.card{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}
+.win{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+.win .bar{height:64px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 24px;gap:10px;font-size:24px;color:var(--mute);font-weight:500}
+.win .bar i{width:15px;height:15px;border-radius:50%;display:inline-block;background:#ff5f57}.win .bar i:nth-child(2){background:#febc2e}.win .bar i:nth-child(3){background:#28c840}
+.win .bar .tt{flex:1;text-align:center;margin-right:70px}
+.mono{font-family:"JetBrains Mono",monospace}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);font-size:26px;font-weight:600;white-space:nowrap}
+.pill{display:inline-block;padding:6px 14px;border-radius:10px;font-size:20px;font-weight:700;letter-spacing:1px}
+.ctag{display:inline-flex;align-items:center;gap:.35em;font-weight:700;color:var(--fg)}
+.ctag .logo{margin-right:.1em}
+.caret{display:inline-block;width:3px;height:1em;background:var(--bl);vertical-align:-0.12em;margin-left:2px}.caret.off{opacity:0}
+.cursor{position:absolute;left:0;top:0;z-index:40;filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.ripple{position:absolute;left:0;top:0;width:60px;height:60px;border-radius:50%;border:4px solid var(--bl);z-index:39;opacity:0}
+.lbl{font-size:22px;letter-spacing:3px;font-weight:600;color:var(--mute);text-transform:uppercase}
+.note{position:absolute;left:0;right:0;text-align:center;font-size:24px;color:var(--mute);font-family:"JetBrains Mono",monospace}
+.strike{position:absolute;left:-6px;top:50%;height:4px;background:var(--rd);border-radius:2px}
+</style></head>
+<body><div id="bg"></div><div id="glow"></div><div id="grid"></div><div id="stage"></div><div id="cap"></div>
+<script src="logos/index.js"></script>
+<script src="engine.js"></script>
+<script src="media.js"></script>
+<script src="media/index.js"></script>
+<script>
+const q = new URLSearchParams(location.search);
+const vid = q.get('vid');
+document.write(`<script src="${vid}.js"><\/script>`);
+</script>
+</body></html>

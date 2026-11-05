@@ -1,0 +1,9 @@
+models/
+out/
+build/*w/
+build/*/voice.wav
+build/*/bed.wav
+build/*/mix.wav
+build/*/scenes.json
+__pycache__/
+web/media/**/clips/*.webm
